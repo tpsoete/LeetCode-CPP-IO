@@ -1,0 +1,10 @@
+out/
+build/
+cmake-build-*/
+.vs/
+.vscode/
+.idea/
+
+.DS_Store
+
+main.cpp
