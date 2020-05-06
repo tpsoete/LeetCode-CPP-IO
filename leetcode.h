@@ -13,6 +13,8 @@ std::ostream& operator<<(std::ostream& os, std::vector<int> const& v);
 std::istream& operator>>(std::istream& is, std::vector<std::vector<int>>& vv);
 std::ostream& operator<<(std::ostream& os, std::vector<std::vector<int>> const& vv);
 
+std::ostream& operator<<(std::ostream& os, std::vector<std::string> const& vs);
+
 // ---- ListNode ----
 
 struct ListNode {
@@ -40,7 +42,7 @@ void DeleteTree(TreeNode* tree);
 std::istream& operator>>(std::istream& is, TreeNode*& tree);
 std::ostream& operator<<(std::ostream& os, TreeNode* tree);
 
-// ---- python-style print ----
+// ---- go-style print ----
 
 template<class T>
 void print(const T& t)
@@ -58,7 +60,7 @@ void print(const T& t, Args ...args)
 template<class ...Args>
 void println(Args ...args)
 {
-    print(args...);
+    if constexpr (sizeof...(args)) print(args...);
     std::cout << std::endl;
 }
 

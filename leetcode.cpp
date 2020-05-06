@@ -5,6 +5,8 @@
 
 using namespace std;
 
+// ---- vectors ----
+
 static void read_vint(vector<int>& v, const string& s)
 {
     v.clear();
@@ -57,6 +59,20 @@ ostream& operator<<(ostream& os, vector<vector<int>> const& vv)
     return os << "]\n";
 }
 
+std::ostream& operator<<(std::ostream& os, std::vector<std::string> const& vs)
+{
+    os << "[";
+    bool first = true;
+    for (auto& s : vs) {
+        if (first) first = false; 
+        else os << ',';
+        os << '"' << s << '"';
+    }
+    return os << "]";
+}
+
+// ---- ListNode ----
+
 void DeleteList(ListNode* list)
 {
     ListNode* p;
@@ -93,6 +109,8 @@ ostream& operator<<(ostream& os, ListNode* list)
     }
     return os << "]";
 }
+
+// ---- TreeNode ----
 
 void DeleteTree(TreeNode* tree)
 {
