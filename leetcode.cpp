@@ -64,7 +64,7 @@ std::ostream& operator<<(std::ostream& os, std::vector<std::string> const& vs)
     os << "[";
     bool first = true;
     for (auto& s : vs) {
-        if (first) first = false; 
+        if (first) first = false;
         else os << ',';
         os << '"' << s << '"';
     }
@@ -87,12 +87,7 @@ istream& operator>>(istream& is, ListNode*& list)
 {
     vector<int> v;
     is >> v;
-    list = nullptr;
-    ListNode* tail = nullptr;
-    for (auto i : v) {
-        if (list == nullptr) list = tail = new ListNode(i);
-        else tail = tail->next = new ListNode(i);
-    }
+    list = Vector2List(v);
     return is;
 }
 
@@ -110,10 +105,22 @@ ostream& operator<<(ostream& os, ListNode* list)
     return os << "]";
 }
 
+ListNode* Vector2List(std::vector<int> const& v)
+{
+    ListNode* list = nullptr;
+    ListNode* tail = nullptr;
+    for (auto i : v) {
+        if (list == nullptr) list = tail = new ListNode(i);
+        else tail = tail->next = new ListNode(i);
+    }
+    return list;
+}
+
 // ---- TreeNode ----
 
 void DeleteTree(TreeNode* tree)
 {
+    if(tree == nullptr) return;
     if (tree->left) DeleteTree(tree->left);
     if (tree->right) DeleteTree(tree->right);
     delete tree;

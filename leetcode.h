@@ -28,6 +28,8 @@ void DeleteList(ListNode* list);
 std::istream& operator>>(std::istream& is, ListNode*& list);
 std::ostream& operator<<(std::ostream& os, ListNode* list);
 
+ListNode* Vector2List(std::vector<int> const& v);
+
 // ---- TreeNode ----
 
 struct TreeNode {
@@ -60,7 +62,7 @@ void print(const T& t, Args ...args)
 template<class ...Args>
 void println(Args ...args)
 {
-    if constexpr (sizeof...(args)) print(args...);
+    if (sizeof...(args)) print(args...);
     std::cout << std::endl;
 }
 
